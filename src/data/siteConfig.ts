@@ -9,7 +9,7 @@ export const siteConfig = {
   role: "Ingeniero en Informática",
   specialization:
     "Business Intelligence · Análisis de Datos · Bases de Datos · ETL · Oracle APEX",
-  location: "[UBICACIÓN]",
+  location: "Caracas - Venezuela",
 
   email: "auribe83@gmail.com",
   whatsapp: "+584122697083",
