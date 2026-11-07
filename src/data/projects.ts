@@ -4,9 +4,12 @@ export interface Project {
   technologies: string[]
   problem: string
   solution: string
-  result: string
+  // Opcional: si no hay resultado real, omítelo y la tarjeta no mostrará la sección
+  result?: string
   kpis?: string[]
   link: string
+  // Opcional: URL de incrustación (iframe) para mostrar el proyecto dentro de la tarjeta
+  embedUrl?: string
   isPlaceholder: boolean
 }
 
@@ -22,10 +25,11 @@ export const projects: Project[] = [
       "La dirección comercial necesita visibilidad rápida sobre ventas, crecimiento y cumplimiento de objetivos sin depender de reportes manuales dispersos.",
     solution:
       "Dashboard diseñado para visualizar ventas, crecimiento, cumplimiento de objetivos, rentabilidad y comportamiento comercial en un solo lugar.",
-    result: "[RESULTADO PENDIENTE DE COMPLETAR CON DATOS REALES DEL PROYECTO]",
     kpis: ["Ventas totales", "Crecimiento", "Ticket promedio", "Margen", "Cumplimiento de objetivos"],
-    link: "[PROYECTO REAL]",
-    isPlaceholder: true,
+    link: "https://app.powerbi.com/view?r=eyJrIjoiY2ZlNjUyOWItYTkzMi00YTUxLTgwZWEtZWMyMzY4ZTNjZWJiIiwidCI6ImMxZmJhZTFlLTYzZTgtNGE3Yi05NjM1LWIxMTcwMzJhMDcyNiIsImMiOjR9",
+    embedUrl:
+      "https://app.powerbi.com/view?r=eyJrIjoiY2ZlNjUyOWItYTkzMi00YTUxLTgwZWEtZWMyMzY4ZTNjZWJiIiwidCI6ImMxZmJhZTFlLTYzZTgtNGE3Yi05NjM1LWIxMTcwMzJhMDcyNiIsImMiOjR9",
+    isPlaceholder: false,
   },
   {
     title: "Dashboard Financiero",
@@ -35,7 +39,6 @@ export const projects: Project[] = [
       "El equipo financiero requiere consolidar ingresos, gastos y flujo de caja de distintas fuentes para comparar resultados mes a mes.",
     solution:
       "Dashboard financiero que integra ingresos, gastos, rentabilidad y flujo financiero con comparativas mensuales claras.",
-    result: "[RESULTADO PENDIENTE DE COMPLETAR CON DATOS REALES DEL PROYECTO]",
     kpis: ["Ingresos", "Gastos", "Rentabilidad", "Flujo financiero", "Comparación mensual"],
     link: "[PROYECTO REAL]",
     isPlaceholder: true,
@@ -48,7 +51,6 @@ export const projects: Project[] = [
       "La información necesaria para el análisis proviene de múltiples sistemas con formatos y calidad de datos distintos.",
     solution:
       "Proceso ETL diseñado para integrar información proveniente de diferentes fuentes, aplicar reglas de transformación y consolidar los datos para su posterior análisis.",
-    result: "[RESULTADO PENDIENTE DE COMPLETAR CON DATOS REALES DEL PROYECTO]",
     link: "[PROYECTO REAL]",
     isPlaceholder: true,
   },
@@ -60,7 +62,6 @@ export const projects: Project[] = [
       "Se requiere una herramienta interna para gestionar información y operaciones sin depender de hojas de cálculo dispersas.",
     solution:
       "Aplicación web empresarial para gestionar información, usuarios, operaciones, consultas y reportes.",
-    result: "[RESULTADO PENDIENTE DE COMPLETAR CON DATOS REALES DEL PROYECTO]",
     link: "[PROYECTO REAL]",
     isPlaceholder: true,
   },
@@ -72,7 +73,6 @@ export const projects: Project[] = [
       "Existe un conjunto de datos con potencial de generar información valiosa, pero sin un análisis estructurado que revele patrones útiles.",
     solution:
       "Análisis exploratorio de un conjunto de datos para detectar patrones, tendencias y relaciones relevantes.",
-    result: "[RESULTADO PENDIENTE DE COMPLETAR CON DATOS REALES DEL PROYECTO]",
     link: "[PROYECTO REAL]",
     isPlaceholder: true,
   },

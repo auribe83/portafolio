@@ -1,7 +1,17 @@
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, ChevronUp, Eye } from "lucide-react"
 import type { Project } from "../../data/projects"
 
-export function ProjectCard({ project }: { project: Project }) {
+const linkClass =
+  "inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition-colors hover:text-brand-700"
+
+interface ProjectCardProps {
+  project: Project
+  showEmbed?: boolean
+  onToggleEmbed?: () => void
+}
+
+export function ProjectCard({ project, showEmbed = false, onToggleEmbed }: ProjectCardProps) {
+
   return (
     <div className="flex h-full flex-col gap-5 rounded-2xl border border-slate-200 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-card-hover">
       <div className="flex items-start justify-between gap-4">
@@ -33,10 +43,12 @@ export function ProjectCard({ project }: { project: Project }) {
           <dt className="font-semibold text-ink-900">Solución</dt>
           <dd className="text-slate-600">{project.solution}</dd>
         </div>
-        <div>
-          <dt className="font-semibold text-ink-900">Resultado</dt>
-          <dd className="text-slate-500 italic">{project.result}</dd>
-        </div>
+        {project.result && (
+          <div>
+            <dt className="font-semibold text-ink-900">Resultado</dt>
+            <dd className="text-slate-500 italic">{project.result}</dd>
+          </div>
+        )}
       </dl>
 
       {project.kpis && (
@@ -52,13 +64,57 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
       )}
 
-      <a
-        href={project.link}
-        className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition-colors hover:text-brand-700"
-      >
-        Ver proyecto
-        <ArrowUpRight size={16} />
-      </a>
+      {project.embedUrl && showEmbed && (
+        <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
+          <iframe
+            title={project.title}
+            src={project.embedUrl}
+            allowFullScreen
+            className="aspect-[16/10] w-full"
+          />
+        </div>
+      )}
+
+      <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-2">
+        {project.embedUrl ? (
+          <>
+            <button
+              type="button"
+              onClick={onToggleEmbed}
+              aria-expanded={showEmbed}
+              className={linkClass}
+            >
+              {showEmbed ? (
+                <>
+                  Ocultar proyecto
+                  <ChevronUp size={16} />
+                </>
+              ) : (
+                <>
+                  Ver proyecto
+                  <Eye size={16} />
+                </>
+              )}
+            </button>
+            {showEmbed && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 transition-colors hover:text-brand-700"
+              >
+                Abrir en pestaña nueva
+                <ArrowUpRight size={16} />
+              </a>
+            )}
+          </>
+        ) : (
+          <a href={project.link} target="_blank" rel="noopener noreferrer" className={linkClass}>
+            Ver proyecto
+            <ArrowUpRight size={16} />
+          </a>
+        )}
+      </div>
     </div>
   )
 }
