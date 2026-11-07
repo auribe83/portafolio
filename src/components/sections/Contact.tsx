@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Github, MessageCircle, MapPin } from "lucide-react"
+import { Mail, Linkedin, MessageCircle, MapPin } from "lucide-react"
 import { siteConfig } from "../../data/siteConfig"
 import { Reveal } from "../ui/Reveal"
 import { Button } from "../ui/Button"
@@ -21,12 +21,6 @@ const channels = [
     value: "Ver perfil",
     href: siteConfig.linkedin,
     icon: Linkedin,
-  },
-  {
-    label: "GitHub",
-    value: siteConfig.github,
-    href: siteConfig.github,
-    icon: Github,
   },
   {
     label: "Ubicación",
