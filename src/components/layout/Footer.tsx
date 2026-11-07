@@ -1,4 +1,4 @@
-import { BarChart3, Linkedin, Github, Mail } from "lucide-react"
+import { BarChart3, Linkedin, Github, Mail, MapPin } from "lucide-react"
 import { siteConfig } from "../../data/siteConfig"
 
 export function Footer() {
@@ -16,6 +16,10 @@ export function Footer() {
           </a>
           <p className="mt-3 text-sm leading-relaxed text-slate-400">
             {siteConfig.role} · {siteConfig.specialization}
+          </p>
+          <p className="mt-3 flex items-center gap-2 text-sm text-slate-400">
+            <MapPin size={14} />
+            {siteConfig.location}
           </p>
         </div>
 

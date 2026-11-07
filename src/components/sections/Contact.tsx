@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Github, MessageCircle } from "lucide-react"
+import { Mail, Linkedin, Github, MessageCircle, MapPin } from "lucide-react"
 import { siteConfig } from "../../data/siteConfig"
 import { Reveal } from "../ui/Reveal"
 import { Button } from "../ui/Button"
@@ -28,6 +28,12 @@ const channels = [
     href: siteConfig.github,
     icon: Github,
   },
+  {
+    label: "Ubicación",
+    value: siteConfig.location,
+    href: undefined as string | undefined, // sin enlace: solo informativo
+    icon: MapPin,
+  },
 ]
 
 export function Contact() {
@@ -51,22 +57,42 @@ export function Contact() {
               </Button>
             </div>
 
-            <div className="mx-auto mt-12 grid max-w-2xl grid-cols-2 gap-4 sm:grid-cols-4">
-              {channels.map(({ label, value, href, icon: Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="group flex flex-col items-center gap-2 rounded-xl border border-slate-200 bg-white p-4 text-center transition-colors hover:border-brand-300"
-                >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-50 text-ink-700 transition-colors group-hover:bg-brand-50 group-hover:text-brand-600">
-                    <Icon size={16} />
-                  </span>
-                  <span className="text-xs font-semibold text-ink-900">{label}</span>
-                  <span className="truncate text-[11px] text-slate-500">{value}</span>
-                </a>
-              ))}
+            <div className="mx-auto mt-12 flex max-w-4xl flex-wrap justify-center gap-4">
+              {channels.map(({ label, value, href, icon: Icon }) => {
+                const cardClass =
+                  "group flex w-[calc(50%-0.5rem)] flex-col items-center gap-2 rounded-xl border border-slate-200 bg-white p-4 text-center transition-colors sm:w-44"
+                const content = (
+                  <>
+                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-50 text-ink-700 transition-colors group-hover:bg-brand-50 group-hover:text-brand-600">
+                      <Icon size={16} />
+                    </span>
+                    <span className="text-xs font-semibold text-ink-900">{label}</span>
+                    <span className="max-w-full break-words text-[11px] text-slate-500">{value}</span>
+                  </>
+                )
+
+                // Sin enlace (ej. ubicación): tarjeta informativa
+                if (!href) {
+                  return (
+                    <div key={label} className={cardClass}>
+                      {content}
+                    </div>
+                  )
+                }
+
+                const isExternal = href.startsWith("http")
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    className={`${cardClass} hover:border-brand-300`}
+                  >
+                    {content}
+                  </a>
+                )
+              })}
             </div>
           </div>
         </Reveal>
