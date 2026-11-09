@@ -44,6 +44,21 @@ export const projects: Project[] = [
     isPlaceholder: true,
   },
   {
+    title: "Tablero Logístico",
+    category: "Business Intelligence",
+    technologies: ["Power BI", "DAX"],
+    problem:
+      "El costo del flete se revisaba sin una vista clara de dónde se concentraba: no era fácil saber qué zonas, tipos de sede o estados de pedido superaban el límite aceptable.",
+    solution:
+      "Tablero que mide el flete como porcentaje de las ventas y lo compara contra un límite configurable. Los segmentos que lo superan se marcan en rojo, y se puede filtrar por mes, día y conductor.",
+    kpis: ["Ventas", "Flete", "% Flete", "# Pedidos", "% Cumplimiento"],
+    link:
+      "https://app.powerbi.com/view?r=eyJrIjoiYjBiZjIwMmYtNzRmYS00MGY2LTg2MjAtMDQzZDdkZjM2ZmUyIiwidCI6ImMxZmJhZTFlLTYzZTgtNGE3Yi05NjM1LWIxMTcwMzJhMDcyNiIsImMiOjR9",
+    embedUrl:
+      "https://app.powerbi.com/view?r=eyJrIjoiYjBiZjIwMmYtNzRmYS00MGY2LTg2MjAtMDQzZDdkZjM2ZmUyIiwidCI6ImMxZmJhZTFlLTYzZTgtNGE3Yi05NjM1LWIxMTcwMzJhMDcyNiIsImMiOjR9",
+    isPlaceholder: false,
+  },
+  {
     title: "Pipeline ETL",
     category: "ETL / Integración de Datos",
     technologies: ["Pentaho", "SQL", "PostgreSQL"],
